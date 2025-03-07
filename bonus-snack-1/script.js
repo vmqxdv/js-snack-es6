@@ -24,12 +24,11 @@ const bikesDataTableBody = generateBodyOfTableFromData(bikesData, bikesDataTable
 bikesDataTable.append(bikesDataTableBody);
 
 
-const lowestValueRow = getRowWithLowestValue(bikesDataTable, 'peso');
-const clonedRow = lowestValueRow.cloneNode(true);
+const lowestWeightBike = getRowWithLowestValue(bikesDataTable, 'peso');
+const toDisplay = document.getElementById('lowest-weight-bike');
 
-const lowestWeightBike = document.getElementById('lowest-weight-bike');
-lowestWeightBike.append(clonedRow);
 
+toDisplay.innerHTML = `<b>La bici che pesa di meno è:</b> ${lowestWeightBike}kg`;
 
 
 
@@ -37,7 +36,6 @@ lowestWeightBike.append(clonedRow);
 
 function getRowWithLowestValue(table, valueName) {
   const headers = table.querySelectorAll('thead th');
-
   let valueInTableIndex = -1;
 
   headers.forEach((head, i) => {
@@ -48,18 +46,14 @@ function getRowWithLowestValue(table, valueName) {
     throw new Error(`"${valueName}" Non è presente nella tabella.`);
   };
 
-
   const rows = table.querySelectorAll('tbody tr');
-
   let lowestValueRow;
   let lowestValue = Infinity;
 
   rows.forEach(row => {
     const cells = row.querySelectorAll('td');
-    
     if (cells[valueInTableIndex]) {
       const value = Number(cells[valueInTableIndex].textContent);
-      
       if (!isNaN(value) && value < lowestValue) {
         lowestValue = value;
         lowestValueRow = row;
@@ -67,7 +61,11 @@ function getRowWithLowestValue(table, valueName) {
     };
   });
 
-  return lowestValueRow;
+  if (lowestValueRow) {
+    return Array.from(lowestValueRow.querySelectorAll('td')).map(cell => cell.textContent.trim()).join(', ');
+  } else {
+    throw new Error('Non è stato possibile trovare il valore più basso.');
+  };
 };
 
 
