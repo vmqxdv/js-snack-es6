@@ -21,3 +21,28 @@ const bikesDataTable = document.getElementById('bikes-data-table');
 
 
 const bikesDataTableBody = document.createElement('tbody');
+const bikesDataTableFoot = document.createElement('tfoot');
+
+
+bikesData.forEach(bike => {
+  const { name, weight } = bike;
+  
+  
+  const newRow = document.createElement('tr');
+  
+
+  const bikeName = document.createElement('td');
+  const bikeWeight = document.createElement('td');
+
+  bikeName.innerHTML = name;
+  bikeWeight.innerHTML = weight;
+
+
+  newRow.append(bikeName, bikeWeight);
+
+
+  bikesDataTableBody.append(newRow);
+});
+
+
+bikesDataTable.append(bikesDataTableBody);
