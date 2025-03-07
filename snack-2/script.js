@@ -17,7 +17,7 @@ tutto in console.
 
 */
 
-const teams = [
+const teamsData = [
   { name: 'Juventus', points: 0, foulsSuffered: 0 },
   { name: 'Milan', points: 0, foulsSuffered: 0 },
   { name: 'Inter', points: 0, foulsSuffered: 0 },
@@ -30,3 +30,14 @@ const teams = [
   { name: 'Bologna', points: 0, foulsSuffered: 0 }
 ];
 
+
+teamsData.forEach(t => {
+  t.points = getRandomNumber(0, 30);
+  t.foulsSuffered = getRandomNumber(0, 20)
+});
+
+console.log(teamsData);
+
+function getRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min) ) + min;
+};
