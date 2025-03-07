@@ -12,8 +12,8 @@ const bikesData = [
   { name: 'Cannondale SuperSix EVO', weight: 6.9 },
   { name: 'Trek Emonda SLR', weight: 6.6 },
   { name: 'BMC Teammachine SLR01', weight: 6.8 },
+  { name: 'Wilier Zero SLR', weight: 6.5 },
   { name: 'Cervélo R5', weight: 6.7 },
-  { name: 'Wilier Zero SLR', weight: 6.5 }
 ];
 
 
@@ -24,12 +24,11 @@ const bikesDataTableBody = generateBodyOfTableFromData(bikesData, bikesDataTable
 bikesDataTable.append(bikesDataTableBody);
 
 
-const bikesDataTableFoot = document.createElement('tfoot');
-bikesDataTableFoot.innerHTML = getRowWithLowestValue(bikesDataTable, 'peso');
-console.log(bikesDataTableFoot);
-console.log(getRowWithLowestValue(bikesDataTable, 'peso'));
+const lowestValueRow = getRowWithLowestValue(bikesDataTable, 'peso');
+const clonedRow = lowestValueRow.cloneNode(true);
 
-bikesDataTable.append(bikesDataTableFoot);
+const lowestWeightBike = document.getElementById('lowest-weight-bike');
+lowestWeightBike.append(clonedRow);
 
 
 
