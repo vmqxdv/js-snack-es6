@@ -24,8 +24,8 @@ const bikesDataTableBody = generateBodyOfTableFromData(bikesData, bikesDataTable
 bikesDataTable.append(bikesDataTableBody);
 
 
-const bikesDataTableFoot = getRowWithLowestValue(bikesDataTable, 'peso');
-
+// const bikesDataTableFoot = getRowWithLowestValue(bikesDataTable, 'peso');
+console.log(getRowWithLowestValue(bikesDataTable, 'peso'));
 
 
 
@@ -49,15 +49,22 @@ function getRowWithLowestValue(table, valueName) {
   const rows = table.querySelectorAll('tbody tr');
 
   let lowestValueRow;
+  let lowestValue;
 
-  rows.forEach(r => {
-    const cells = r.querySelectorAll('td');
+  rows.forEach(row => {
+    const cells = row.querySelectorAll('td');
     
     if (cells[valueInTableIndex]) {
       const value = Number(cells[valueInTableIndex].textContent);
-      console.log(value);
+      
+      if (!isNaN(value) && value < lowestValue) {
+        lowestValue = value;
+        lowestValueRow = row;
+      };
     };
   });
+
+  return lowestValueRow;
 };
 
 function generateBodyOfTableFromData(dataArr) {
