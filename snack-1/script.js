@@ -20,12 +20,22 @@ const bikesData = [
 const bikesDataTable = document.getElementById('bikes-data-table');
 
 
-const bikesDataTableFoot = document.createElement('tfoot');
-
-
 const bikesDataTableBody = generateBodyOfTableFromData(bikesData, bikesDataTable);
-
 bikesDataTable.append(bikesDataTableBody);
+
+
+const bikesDataTableFoot = getRowWithLowestValue(bikesDataTable, 'peso');
+
+
+
+
+
+
+
+function getRowWithLowestValue(table, valueName) {
+  const headers = table.querySelectorAll('thead th');
+  console.log(headers);
+};
 
 function generateBodyOfTableFromData(dataArr) {
   const tableBody = document.createElement('tbody');
