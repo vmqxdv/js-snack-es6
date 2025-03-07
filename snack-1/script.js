@@ -53,7 +53,10 @@ function getRowWithLowestValue(table, valueName) {
   rows.forEach(r => {
     const cells = r.querySelectorAll('td');
     
-    if (cells[valueInTableIndex]) console.log(cells[valueInTableIndex].textContent);
+    if (cells[valueInTableIndex]) {
+      const value = Number(cells[valueInTableIndex].textContent);
+      console.log(value);
+    };
   });
 };
 
