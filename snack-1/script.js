@@ -17,7 +17,10 @@ const bikesData = [
 ];
 
 
-console.log(getLowestWeight(bikesData));
+const lowestWeightBike = getLowestWeight(bikesData);
+
+const toDisplay = document.getElementById('lowest-weight-bike');
+toDisplay.innerHTML = lowestWeightBike;
 
 
 
@@ -29,5 +32,5 @@ function getLowestWeight(arr) {
     if (bike.weight < lowestWeightBike.weight) lowestWeightBike = bike;
   });
 
-  return lowestWeightBike;
+  return `<b>La bici con il peso minore:</b> ${lowestWeightBike.name} ${lowestWeightBike.weight}`;
 };
