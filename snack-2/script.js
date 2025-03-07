@@ -31,12 +31,27 @@ const teamsData = [
 ];
 
 
+
 teamsData.forEach(t => {
   t.points = getRandomNumber(0, 30);
-  t.foulsSuffered = getRandomNumber(0, 20)
+  t.foulsSuffered = getRandomNumber(0, 20);
 });
 
-console.log(teamsData);
+console.log(`Team con dati completi:\n`, teamsData);
+
+
+const teamsFoulsSufferedData = [];
+
+teamsData.forEach(t => {
+  const { points, ...teamWithoutPoints } = t;
+
+  teamsFoulsSufferedData.push(teamWithoutPoints);
+});
+
+console.log(`Team con solo i falli subiti:\n`, teamsFoulsSufferedData);
+
+
+
 
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min) ) + min;
