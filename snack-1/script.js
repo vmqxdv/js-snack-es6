@@ -20,29 +20,25 @@ const bikesData = [
 const bikesDataTable = document.getElementById('bikes-data-table');
 
 
-const bikesDataTableBody = document.createElement('tbody');
 const bikesDataTableFoot = document.createElement('tfoot');
 
 
-bikesData.forEach(bike => {
-  const { name, weight } = bike;
-  
-  
-  const newRow = document.createElement('tr');
-  
-
-  const bikeName = document.createElement('td');
-  const bikeWeight = document.createElement('td');
-
-  bikeName.innerHTML = name;
-  bikeWeight.innerHTML = weight;
-
-
-  newRow.append(bikeName, bikeWeight);
-
-
-  bikesDataTableBody.append(newRow);
-});
-
+const bikesDataTableBody = generateBodyOfTableFromData(bikesData, bikesDataTable);
 
 bikesDataTable.append(bikesDataTableBody);
+
+function generateBodyOfTableFromData(dataArr) {
+  const tableBody = document.createElement('tbody');
+
+  dataArr.forEach(item => {
+    const newRow = document.createElement('tr');
+    
+    newRow.innerHTML = Object.values(item)
+      .map(val => `<td>${val}</td>`)
+      .join('');
+    
+      tableBody.append(newRow);
+  });
+
+  return tableBody;
+};
