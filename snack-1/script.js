@@ -49,7 +49,7 @@ function getRowWithLowestValue(table, valueName) {
   const rows = table.querySelectorAll('tbody tr');
 
   let lowestValueRow;
-  let lowestValue;
+  let lowestValue = Infinity;
 
   rows.forEach(row => {
     const cells = row.querySelectorAll('td');
