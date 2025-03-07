@@ -24,7 +24,7 @@ const bikesDataTableBody = generateBodyOfTableFromData(bikesData, bikesDataTable
 bikesDataTable.append(bikesDataTableBody);
 
 
-const bikesDataTableFoot = getRowWithLowestValue(bikesDataTable, 'pesoss');
+const bikesDataTableFoot = getRowWithLowestValue(bikesDataTable, 'peso');
 
 
 
@@ -38,15 +38,21 @@ function getRowWithLowestValue(table, valueName) {
   let valueInTableIndex = -1;
 
   headers.forEach((head, i) => {
-    if (head.textContent.toLowerCase() === valueName.toLowerCase()) {
-      console.log(`trovato: ${head.textContent}`);
-      valueInTableIndex = i;
-    };
+    if (head.textContent.toLowerCase() === valueName.toLowerCase()) valueInTableIndex = i;
   });
 
   if (valueInTableIndex === -1) {
     throw new Error(`"${valueName}" Non è presente nella tabella.`);
   };
+
+
+  const rows = table.querySelectorAll('tbody tr');
+
+  let lowestValueRow;
+
+  rows.forEach(r => {
+    console.log(r);
+  });
 };
 
 function generateBodyOfTableFromData(dataArr) {
