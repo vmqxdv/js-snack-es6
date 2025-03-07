@@ -32,5 +32,5 @@ function getLowestWeight(arr) {
     if (bike.weight < lowestWeightBike.weight) lowestWeightBike = bike;
   });
 
-  return `<b>La bici con il peso minore:</b> ${lowestWeightBike.name} ${lowestWeightBike.weight}`;
+  return `<b>La bici con il peso minore:</b> ${lowestWeightBike.name}, ${lowestWeightBike.weight}kg`;
 };
