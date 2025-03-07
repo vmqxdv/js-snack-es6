@@ -24,8 +24,12 @@ const bikesDataTableBody = generateBodyOfTableFromData(bikesData, bikesDataTable
 bikesDataTable.append(bikesDataTableBody);
 
 
-// const bikesDataTableFoot = getRowWithLowestValue(bikesDataTable, 'peso');
+const bikesDataTableFoot = document.createElement('tfoot');
+bikesDataTableFoot.innerHTML = getRowWithLowestValue(bikesDataTable, 'peso');
+console.log(bikesDataTableFoot);
 console.log(getRowWithLowestValue(bikesDataTable, 'peso'));
+
+bikesDataTable.append(bikesDataTableFoot);
 
 
 
@@ -66,6 +70,7 @@ function getRowWithLowestValue(table, valueName) {
 
   return lowestValueRow;
 };
+
 
 function generateBodyOfTableFromData(dataArr) {
   const tableBody = document.createElement('tbody');
