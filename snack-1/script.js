@@ -37,7 +37,7 @@ function getRowWithLowestValue(table, valueName) {
 
   headers.forEach(head => {
     console.log(head.textContent);
-    if (head.textContent.indexOf(valueName) !== -1) console.log(`trovato: ${head.textContent}`);
+    if (head.textContent.toLowerCase().indexOf(valueName) !== -1) console.log(`trovato: ${head.textContent}`);
   });
 };
 
