@@ -34,7 +34,10 @@ const bikesDataTableFoot = getRowWithLowestValue(bikesDataTable, 'peso');
 
 function getRowWithLowestValue(table, valueName) {
   const headers = table.querySelectorAll('thead th');
-  console.log(headers);
+
+  headers.forEach(head => {
+    console.log(head.textContent);
+  });
 };
 
 function generateBodyOfTableFromData(dataArr) {
